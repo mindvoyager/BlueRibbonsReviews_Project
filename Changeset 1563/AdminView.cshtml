@@ -1,0 +1,111 @@
+@model IEnumerable<BlueRibbonsReview.Models.Campaign>
+
+@{
+    ViewBag.Title = "AdminView";
+}
+
+<h2>AdminView</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ASIN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpenCampaign)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RetailPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CloseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpireDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CalculatedDiscount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorsPurchaseInstructions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorsPurchaseURL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SellerID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpenCampaign)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageUrL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RetailPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CloseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpireDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CalculatedDiscount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorsPurchaseInstructions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VendorsPurchaseURL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SellerID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CampaignID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CampaignID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CampaignID })
+        </td>
+    </tr>
+}
+
+</table>

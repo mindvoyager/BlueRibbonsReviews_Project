@@ -1,0 +1,92 @@
+@model IEnumerable<BlueRibbonsReview.Models.Campaign>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="text-center">
+    <h2>Check out our products! All products are 70% off or more!</h2>
+</div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+    <div class="text-center">
+        @Html.ActionLink("Start Date", "Index", new { sortOrder = ViewBag.StartDateSortParm })&nbsp;
+        @Html.ActionLink("Close Date", "Index", new { sortOrder = ViewBag.CloseDateSortParm })&nbsp;
+        @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })&nbsp;
+        @Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.SalePriceSortParm })&nbsp;
+    </div>
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-default col-lg-2 col-md-3 col-sm-4 col-xs-6">
+            <div class="panel-body">
+                <tr>
+                    <div class="productimagebox" style="height:150px; overflow:hidden; padding:5%;">
+                        <td>
+                            <img src="@Html.DisplayFor(modelItem => item.ImageUrL)" style="max-height:98%; max-width:97%" />
+                        </td>
+                    </div>
+                    <div class="productnamebox" style="line-height:1.15em; height:3.5em; font-weight:bold; overflow:hidden;">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                    </div>
+                    <div class="specialprice">
+                        <td>
+                            $@Html.DisplayFor(modelItem => item.SalePrice)
+                        </td>
+                    </div>
+                    <!-- Fix this later to show % instead of $
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CalculatedDiscount)
+                    </td>
+
+                    -->
+                    <td>
+                        <div class="modal fade" id="modal-@Html.DisplayFor(modelItem => item.CampaignID)" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal-title-@Html.DisplayFor(modelItem => item.CampaignID)">@Html.DisplayFor(modelItem => item.Name)</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @{
+                                            Html.RenderPartial("_Details", item);
+                                        }
+                                    </div>
+                                    <hr />
+                                    <div class="modal-footer" style="border:none;">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-@Html.DisplayFor(modelItem => item.CampaignID)">
+                            See Details!
+                        </button>
+
+                        <!-- REMOVE
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CampaignID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CampaignID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CampaignID })
+                            -->
+                    </td>
+                </tr>
+            </div>
+        </div>
+
+    }
+</div>

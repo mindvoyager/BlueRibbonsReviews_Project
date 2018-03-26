@@ -1,0 +1,87 @@
+@model IEnumerable<BlueRibbonsReview.Models.Campaign>
+
+@{
+    ViewBag.Title = "AdminView";
+}
+
+<h2>AdminView</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Seller.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seller.LastName)
+        </th>
+        <th>
+            @Html.ActionLink("Email", "AdminView", new { sortOrder = ViewBag.SellerEmailSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.ActionLink("Open Campaign", "AdminView", new { sortOrder = ViewBag.OpenCampaignSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RetailPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalePrice)
+        </th>
+        <th>
+            @Html.ActionLink("Start Date", "AdminView", new { sortOrder = ViewBag.StartDateSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Close Date", "AdminView", new { sortOrder = ViewBag.CloseDateSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Expire Date", "AdminView", new { sortOrder = ViewBag.ExpireDateSortParm })
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seller.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seller.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seller.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpenCampaign)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RetailPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CloseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpireDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.CampaignID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CampaignID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CampaignID })
+        </td>
+    </tr>
+}
+
+</table>

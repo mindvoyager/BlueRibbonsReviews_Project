@@ -1,0 +1,34 @@
+@model BlueRibbonsReview.Models.Campaign
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <div class="details-modal col-md-4  col-sm-12">
+        <img src="@Html.DisplayFor(model => model.ImageUrL)" style="max-height:100%; max-width:100%" />
+    </div> 
+    <div class="col-md-8 col-sm-12" style="position:relative">
+        <dl class="dl-horizontal">
+                Regular Price:
+            &nbsp;
+                $@Html.DisplayFor(model => model.RetailPrice)
+                <br />
+                Reviewer Discount:
+            &nbsp;
+                $@Html.DisplayFor(model => model.CalculatedDiscount)
+                <br />
+
+                <div class="specialprice">$@Html.DisplayFor(model => model.SalePrice)</div>
+            <hr />
+                <p>To request this product, please sign in: </p>
+                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Register","Account")'">Sign In</button>
+            <hr />
+
+                <h3 class="details-description">Deal Description:</h3>
+                <p style="font-weight:400;">@Html.DisplayFor(model => model.Description)</p>
+                <br />
+                <a class="btn-lg btn-primary" style="background-color: black;" href="@Model.VendorsPurchaseURL" target="_newtab">See on Amazon</a>
+        </dl>
+    </div>
+</div>
